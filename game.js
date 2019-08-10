@@ -9,7 +9,7 @@ var started = false;
 var level = 0;
 // Generates a new random number between 0 and 3, and store it in a variable called randomNumber
 
-$(document).keypress(function() {
+$(document).keypress(function () {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
@@ -17,7 +17,7 @@ $(document).keypress(function() {
   }
 });
 
-$(".btn").click(function() {
+$(".btn").click(function () {
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
 
@@ -33,7 +33,7 @@ function checkAnswer(currentLevel) {
     // console.log("success");
 
     if (userClickedPattern.length === gamePattern.length) {
-      setTimeout(function() {
+      setTimeout(function () {
         nextSequence();
       }, 1000);
     }
@@ -67,7 +67,7 @@ function playSound(name) {
 function animatePress(currentColour) {
   $("#" + currentColour).addClass("pressed");
 
-  setTimeout(function() {
+  setTimeout(function () {
     $("#" + currentColour).removeClass("pressed");
   }, 100);
 }
@@ -75,10 +75,10 @@ function animatePress(currentColour) {
 function wrongfeedback() {
   $("body").addClass("game-over");
 
-  setTimeout(function() {
+  setTimeout(function () {
     $("body").removeClass("game-over");
   }, 200);
-  $("#level-title").text("Game Over, Press Any Key to Restart");
+  $("#level-title").text("Game Over, Press any Key to Restart");
 }
 
 function startOver() {

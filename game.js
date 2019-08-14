@@ -7,7 +7,6 @@ var userClickedPattern = [];
 var started = false;
 
 var level = 0;
-// Generates a new random number between 0 and 3, and store it in a variable called randomNumber
 
 $(document).keypress(function () {
   if (!started) {
@@ -51,7 +50,7 @@ function nextSequence() {
   level++;
 
   $("#level-title").text("Level " + level);
-
+  // Generates a new random number between 0 and 3, and store it in a variable called randomNumber
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);

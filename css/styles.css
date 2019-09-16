@@ -68,6 +68,13 @@ body {
   font-family: 'Merriweather', serif;
 }
 
+p .copyright {
+  font-size: 1em;
+  font-family: 'Merriweather', serif;
+  padding: 0px;
+  margin: 0;
+}
+
 a:hover {
   color: #EAF6F6;
 }

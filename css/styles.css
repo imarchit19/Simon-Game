@@ -78,3 +78,17 @@ p .copyright {
 a:hover {
   color: #EAF6F6;
 }
+
+@media only screen and (min-width: 600px) {
+  *{
+    font-size:1.2em;
+    padding:inherit;
+  }
+  p.copyright{
+    font-size:1.2em;
+  }
+  div.green, div.red, div.yellow, div.blue{
+    width:200px;
+    height:200px;
+  }
+}

@@ -63,7 +63,7 @@ body {
 
 .copyright {
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.2rem;
   padding: 10px 0 5px;
   font-family: 'Merriweather', serif;
 }
@@ -80,15 +80,23 @@ a:hover {
 }
 
 @media only screen and (min-width: 600px) {
-  *{
-    font-size:1.2em;
-    padding:inherit;
+  * {
+    font-size: 1.2em;
+    padding: inherit;
   }
-  p.copyright{
-    font-size:1.2em;
+  p.copyright {
+    font-size: 0.5em;
   }
-  div.green, div.red, div.yellow, div.blue{
-    width:200px;
-    height:200px;
+
+  .container {
+    width: 100%;
+  }
+
+  div.green,
+  div.red,
+  div.yellow,
+  div.blue {
+    width: 200px;
+    height: 200px;
   }
 }

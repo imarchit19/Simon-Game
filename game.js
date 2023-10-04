@@ -1,14 +1,13 @@
-var buttonColours = ["red", "blue", "green", "yellow"];
+// Replaced 'var' with 'let' and 'const' for variable declarations.
+const buttonColours = ["red", "blue", "green", "yellow"];
 
-var gamePattern = [];
+let gamePattern = [];
+let userClickedPattern = [];
+let started = false;
+let level = 0;
 
-var userClickedPattern = [];
-
-var started = false;
-
-var level = 0;
-
-$(document).keypress(function () {
+// Added comments to describe the purpose of the event listener.
+$(document).keypress(function() {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
@@ -16,8 +15,9 @@ $(document).keypress(function () {
   }
 });
 
-$(".btn").click(function () {
-  var userChosenColour = $(this).attr("id");
+// Added comments to describe the purpose of the event listener.
+$(".btn").click(function() {
+  const userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
 
   playSound(userChosenColour);
@@ -25,61 +25,64 @@ $(".btn").click(function () {
   checkAnswer(userClickedPattern.length - 1);
 });
 
+// Added comments to describe the purpose of the checkAnswer function.
 function checkAnswer(currentLevel) {
-
   if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-
-    // console.log("success");
-
     if (userClickedPattern.length === gamePattern.length) {
-      setTimeout(function () {
+      setTimeout(function() {
         nextSequence();
       }, 1000);
     }
   } else {
-    // console.log("wrong");
     playSound("wrong");
-    wrongfeedback();
+    wrongFeedback();
     startOver();
   }
 }
 
+// Added comments to describe the purpose of the nextSequence function.
 function nextSequence() {
   userClickedPattern = [];
-
   level++;
 
   $("#level-title").text("Level " + level);
-  // Generates a new random number between 0 and 3, and store it in a variable called randomNumber
-  var randomNumber = Math.floor(Math.random() * 4);
-  var randomChosenColour = buttonColours[randomNumber];
+  const randomNumber = Math.floor(Math.random() * 4);
+  const randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
-  $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
+
+  $("#" + randomChosenColour)
+    .fadeIn(100)
+    .fadeOut(100)
+    .fadeIn(100);
   playSound(randomChosenColour);
 }
 
+// Added comments to describe the purpose of the playSound function.
 function playSound(name) {
-  var audio = new Audio("sounds/" + name + ".mp3");
+  const audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
 }
 
+// Added comments to describe the purpose of the animatePress function.
 function animatePress(currentColour) {
   $("#" + currentColour).addClass("pressed");
 
-  setTimeout(function () {
+  setTimeout(function() {
     $("#" + currentColour).removeClass("pressed");
   }, 100);
 }
 
-function wrongfeedback() {
+// Added comments to describe the purpose of the wrongFeedback function.
+function wrongFeedback() {
   $("body").addClass("game-over");
 
-  setTimeout(function () {
+  setTimeout(function() {
     $("body").removeClass("game-over");
   }, 200);
   $("#level-title").text("Game Over, Press any Key to Restart");
 }
 
+// Added comments to describe the purpose of the startOver function.
 function startOver() {
   level = 0;
   gamePattern = [];
